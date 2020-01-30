@@ -73,39 +73,47 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            <div class="card shadow">
-                <div class="card-header bg-dark text-light">
-                    <div class="float-right">
-                        @yield('link-right')
-                    </div>
-                    <h3 class="card-title m-0 p-0">
-                        @yield('title-header')
-                    </h3>
+        <main class="container-fluid py-2">
+            @include('sweetalert::alert')
+            <div class="row">
+                <div class="col-sm-2">
+                    @include('components.menus.sidebar')
                 </div>
-                <div class="card-body">
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                            {{ $error }}<br>
-                        @endforeach
-                    </div>
-                    @endif
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
+                <div class="col-8">
+                    <div class="card shadow">
+                        <div class="card-header bg-dark text-light">
+                            <div class="float-right">
+                                @yield('link-right')
+                            </div>
+                            <h3 class="card-title m-0 p-0">
+                                @yield('title-header')
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    {{ $error }}<br>
+                                @endforeach
+                            </div>
+                            @endif
+                            @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                            @endif
 
-                    @yield('content')
+                            @yield('content')
 
-                </div>
-                <div class="card-footer p-1 mb-0 ">
-                    <div class="float-right">
-                        <strong>Rent</strong><em> Buildings</em>
-                        <small><i class="fa fa-copyright" aria-hidden="true"></i> Todos os direitos reservados - 2020 </small>
+                        </div>
+                        <div class="card-footer p-1 mb-0 ">
+                            <div class="float-right">
+                                <strong>Rent</strong><em> Buildings</em>
+                                <small><i class="fa fa-copyright" aria-hidden="true"></i> Todos os direitos reservados - 2020 </small>
+                            </div>
+                            @yield('footer')
+                        </div>
                     </div>
-                    @yield('footer')
                 </div>
             </div>
         </main>
